@@ -1,0 +1,27 @@
+{
+  "name": "be/app-company",
+  "type": "library",
+  "description": "公司（公司网站、企业站）",
+  "keywords": [
+    "Company",
+    "公司",
+    "网站",
+    "企业站"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "liu12",
+      "email": "i@liu12.com",
+      "homepage": "http://www.liu12.com/"
+    }
+  ],
+  "require": {
+    "be/be": "~2.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Be\\App\\Company\\": "src/"
+    }
+  }
+}
