@@ -23,6 +23,7 @@ class Team
         if (!$members) {
             $members = Be::getTable('company_team')
                 ->where('is_enable', 1)
+                ->limit($n)
                 ->getObjects();
 
             $cache->set($key, $members, 600);
