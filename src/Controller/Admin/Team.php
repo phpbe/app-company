@@ -189,6 +189,11 @@ class Team
                             'target' => 'drawer',
                         ],
                         [
+                            'name' => 'job',
+                            'label' => '职位',
+                            'width' => '300',
+                        ],
+                        [
                             'name' => 'is_enable',
                             'label' => '公开',
                             'driver' => TableItemSwitch::class,
