@@ -3,9 +3,6 @@ namespace Be\App\Company\Config;
 
 class Contact
 {
-    public string $title = '联系我们';
-    public string $metaDescription = '';
-    public string $metaKeywords = '';
     public string $mapType = 'baidu';
     public string $mapKeyBaidu = '';
     public string $mapKeyGoogle = '';

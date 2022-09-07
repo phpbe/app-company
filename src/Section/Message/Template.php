@@ -30,15 +30,15 @@ class Template extends Section
                 echo '<div class="be-container">';
             }
 
-            echo $this->pageTemplate->tag0('be-section-title');
+            echo $this->page->tag0('be-section-title');
             echo $this->config->title;
-            echo $this->pageTemplate->tag1('be-section-title');
+            echo $this->page->tag1('be-section-title');
 
-            echo $this->pageTemplate->tag0('be-section-content');
+            echo $this->page->tag0('be-section-content');
             echo '<form id="form-message-'. $this->id . '">';
 
             echo '<input type="hidden" name="page_url" value="' . \Be\Be::getRequest()->getUrl() . '">';
-            echo '<input type="hidden" name="page_title" value="' . ($this->pageTemplate->title ?? '') . '">';
+            echo '<input type="hidden" name="page_title" value="' . ($this->page->title ?? '') . '">';
 
             $my = \Be\Be::getUser();
 
@@ -81,7 +81,7 @@ class Template extends Section
 
             echo '</form>';
 
-            echo $this->pageTemplate->tag1('be-section-content');
+            echo $this->page->tag1('be-section-content');
 
             if ($this->position === 'middle' && $this->config->width === 'default') {
                 echo '</div>';

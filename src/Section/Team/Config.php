@@ -1,8 +1,8 @@
 <?php
-namespace Be\App\Company\Section\Message;
+namespace Be\App\Company\Section\Team;
 
 /**
- * @BeConfig("留言表单", ordering="2", icon="el-icon-message")
+ * @BeConfig("团队", ordering="1", icon="el-icon-user")
  */
 class Config
 {
@@ -15,35 +15,17 @@ class Config
 
     /**
      * @BeConfigItem("标题",
-     *     driver="FormItemInput",
-     *     ui="return ['form-item' => ['v-show' => 'formData.enable === 1']];"
+     *     driver="FormItemInput"
      * )
      */
-    public string $title = '在线留言';
+    public string $title = '核心团队';
 
     /**
-     * @BeConfigItem("名字必填",
-     *     driver="FormItemSwitch",
-     *     ui="return ['form-item' => ['v-show' => 'formData.enable === 1']];"
+     * @BeConfigItem("展示数量",
+     *     driver="FormItemInputNumberInt"
      * )
      */
-    public int $nameRequired = 1;
-
-    /**
-     * @BeConfigItem("邮箱必填",
-     *     driver="FormItemSwitch",
-     *     ui="return ['form-item' => ['v-show' => 'formData.enable === 1']];"
-     * )
-     */
-    public int $emailRequired = 1;
-
-    /**
-     * @BeConfigItem("手机号必填",
-     *     driver="FormItemSwitch",
-     *     ui="return ['form-item' => ['v-show' => 'formData.enable === 1']];"
-     * )
-     */
-    public int $mobileRequired = 1;
+    public int $n = 6;
 
     /**
      * @BeConfigItem("宽度",
@@ -60,6 +42,13 @@ class Config
      * )
      */
     public string $backgroundColor = '#FFFFFF';
+
+    /**
+     * @BeConfigItem("背景图像",
+     *     driver="FormItemStorageImage"
+     * )
+     */
+    public string $backgroundImage= '';
 
     /**
      * @BeConfigItem("内边距 （手机端）",

@@ -24,9 +24,13 @@ class Contact
         $configContact = Be::getConfig('App.Company.Contact');
         $response->set('configContact', $configContact);
 
-        $response->set('title', $configContact->title);
-        $response->set('metaDescription', $configContact->metaDescription);
-        $response->set('metaKeywords', $configContact->metaKeywords);
+        $pageConfig = $response->getPageConfig();
+        $response->set('pageConfig', $pageConfig);
+
+        $response->set('title', $pageConfig->title ?: '');
+        $response->set('metaKeywords', $pageConfig->metaDescription ?: '');
+        $response->set('metaDescription', $pageConfig->metaKeywords ?: '');
+        $response->set('pageTitle', $pageConfig->pageTitle ?: ($pageConfig->title ?: ''));
 
         $response->display();
     }

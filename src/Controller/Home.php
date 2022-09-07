@@ -21,10 +21,13 @@ class Home
         $request = Be::getRequest();
         $response = Be::getResponse();
 
-        $page = Be::getConfig('App.Company.Page.Home.index');
-        $response->set('title', $page->pageTitle ?? '');
-        $response->set('metaKeywords', $page->pageDescription ?? '');
-        $response->set('metaDescription', $page->pageKeywords ?? '');
+        $pageConfig = $response->getPageConfig();
+        $response->set('pageConfig', $pageConfig);
+
+        $response->set('title', $pageConfig->title ?: '');
+        $response->set('metaKeywords', $pageConfig->metaDescription ?: '');
+        $response->set('metaDescription', $pageConfig->metaKeywords ?: '');
+        $response->set('pageTitle', $pageConfig->pageTitle ?: ($pageConfig->title ?: ''));
 
         $response->display();
     }

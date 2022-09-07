@@ -16,9 +16,6 @@ class index
         [
             'name' => 'be-page-content',
         ],
-        [
-            'name' => 'App.Company.Message',
-        ],
     ];
 
     /**
@@ -52,7 +49,6 @@ class index
      * )
      */
     public string $pageTitle = '';
-
 
 
 }
