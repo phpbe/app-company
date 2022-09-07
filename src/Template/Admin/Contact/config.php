@@ -63,7 +63,7 @@
 
                             <div class="be-mt-100"><span class="be-c-red">*</span> 在地图中标记位置：</div>
                             <div class="be-mt-50">
-                                <iframe src="<?php echo beAdminUrl('Contact.Contact.baiduMap'); ?>" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
+                                <iframe src="<?php echo beAdminUrl('Company.Contact.baiduMap'); ?>" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
                             </div>
                         </template>
 
@@ -83,7 +83,7 @@
 
                             <div class="be-mt-100"><span class="be-c-red">*</span> 在地图中标记位置：</div>
                             <div class="be-mt-50">
-                                <iframe src="<?php echo beAdminUrl('Contact.Contact.googleMap'); ?>" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
+                                <iframe src="<?php echo beAdminUrl('Company.Contact.googleMap'); ?>" style="width:100%; height:400px;" scrolling="no" frameborder="0"></iframe>
                             </div>
 
                         </template>
@@ -270,7 +270,7 @@
                         if (valid) {
                             _this.loading = true;
                             vueNorth.loading = true;
-                            _this.$http.post("<?php echo beAdminUrl('Contact.Contact.config'); ?>", {
+                            _this.$http.post("<?php echo beAdminUrl('Company.Contact.config'); ?>", {
                                 formData: _this.formData
                             }).then(function (response) {
                                 _this.loading = false;

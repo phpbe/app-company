@@ -21,7 +21,7 @@ class Team
         $request = Be::getRequest();
         $response = Be::getResponse();
 
-        $configContact = Be::getConfig('App.Contact.Contact');
+        $configContact = Be::getConfig('App.Company.Contact');
         $response->set('configContact', $configContact);
 
         $response->set('title', $configContact->title);

@@ -13,3 +13,25 @@ CREATE TABLE `company_contact_message` (
 ALTER TABLE `company_contact_message`
 ADD PRIMARY KEY (`id`),
 ADD KEY `create_time` (`create_time`);
+
+
+
+CREATE TABLE `company_team` (
+`id` varchar(36) NOT NULL DEFAULT 'uuid()' COMMENT 'UUID',
+`avatar` varchar(120) NOT NULL DEFAULT '' COMMENT '头像',
+`name` varchar(60) NOT NULL DEFAULT '' COMMENT '名称',
+`job` varchar(60) NOT NULL DEFAULT '' COMMENT '职位',
+`im_facebook` varchar(120) NOT NULL DEFAULT '' COMMENT 'Facebook',
+`im_twitter` varchar(120) NOT NULL DEFAULT '' COMMENT 'Twitter',
+`im_instagram` varchar(120) NOT NULL DEFAULT '' COMMENT 'Instagram',
+`im_wechat` varchar(120) NOT NULL DEFAULT '' COMMENT '微信',
+`im_weibo` varchar(120) NOT NULL DEFAULT '' COMMENT '微博',
+`is_enable` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否启用',
+`is_delete` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除',
+`create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+`update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='团队';
+
+
+ALTER TABLE `company_team`
+ADD PRIMARY KEY (`id`);

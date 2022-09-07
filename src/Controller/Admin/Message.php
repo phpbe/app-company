@@ -17,15 +17,15 @@ class Message
     /**
      * 留言
      *
-     * @BeMenu("留言", ordering="1.2", icon="el-icon-message")
-     * @BePermission("留言", ordering="1.2")
+     * @BeMenu("留言", ordering="2.2", icon="el-icon-message")
+     * @BePermission("留言", ordering="2.2")
      */
     public function messages()
     {
         Be::getAdminPlugin('Curd')->setting([
 
             'label' => '留言',
-            'table' => 'contact_message',
+            'table' => 'company_contact_message',
 
             'grid' => [
                 'title' => '留言列表',

@@ -11,13 +11,13 @@ class Contact
 
     public function edit($data)
     {
-        $configContact = Be::getConfig('App.Contact.Contact');
+        $configContact = Be::getConfig('App.Company.Contact');
         foreach ($data as $key => $val) {
             if (isset($configContact->$key)) {
                 $configContact->$key = $val;
             }
         }
-        ConfigHelper::update('App.Contact.Contact', $configContact);
+        ConfigHelper::update('App.Company.Contact', $configContact);
 	}
 
 }

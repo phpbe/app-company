@@ -17,7 +17,7 @@ class index
             'name' => 'be-page-content',
         ],
         [
-            'name' => 'App.Contact.Message',
+            'name' => 'App.Company.Message',
         ],
     ];
 
