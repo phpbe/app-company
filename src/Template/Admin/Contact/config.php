@@ -19,19 +19,6 @@
                 <div class="be-col-14">
                     <div class="be-p-150 be-bc-fff">
 
-                        <div><span class="be-c-red">*</span> 页面标题：</div>
-                        <el-form-item class="be-mt-50" prop="title" :rules="[{required: true, message: '请输入页面标题', trigger: 'change' }]">
-                            <el-input
-                                    type="text"
-                                    placeholder="请输入页面标题"
-                                    v-model = "formData.title"
-                                    size="medium"
-                                    maxlength="120"
-                                    show-word-limit>
-                            </el-input>
-                        </el-form-item>
-                        <?php $formData['title'] = $this->configContact->title; ?>
-
                         <div class="be-row">
                             <div class="be-col-auto be-lh-400">
                                 <span class="be-c-red">*</span> 地图类型：
@@ -134,45 +121,6 @@
                     <div class="be-pl-200">
 
                         <div class="be-p-150 be-bc-fff">
-
-                            <div>
-                                SEO描述
-                                <el-tooltip effect="dark" content="这是该文章分类的整体SEO描述，可以添加一些文章分类描述，使文章分类在搜索引擎中获得更高的排名。" placement="top">
-                                    <i class="el-icon-fa fa-question-circle-o"></i>
-                                </el-tooltip>
-                            </div>
-                            <el-input
-                                    class="be-mt-50"
-                                    type="textarea"
-                                    :rows="6"
-                                    placeholder="请输入SEO描述"
-                                    v-model = "formData.metaDescription"
-                                    size="medium"
-                                    maxlength="500"
-                                    show-word-limit>
-                            </el-input>
-                            <?php
-                            $formData['metaDescription'] = $this->configContact->metaDescription;
-                            ?>
-
-                            <div class="be-mt-150">
-                                SEO关键词
-                                <el-tooltip effect="dark" content="关键词可以提高搜索结果排名，建议1-2个关键词即可，堆砌关键词可能会降低排名！" placement="top">
-                                    <i class="el-icon-fa fa-question-circle-o"></i>
-                                </el-tooltip>
-                            </div>
-                            <el-input
-                                    class="be-mt-50"
-                                    type="text"
-                                    placeholder="请输入SEO关键词，多个关键词以逗号分隔。"
-                                    v-model = "formData.metaKeywords"
-                                    size="medium"
-                                    maxlength="60">
-                            </el-input>
-                            <?php
-                            $formData['metaKeywords'] = $this->configContact->metaKeywords;
-                            ?>
-
                             <div class="be-mt-150">描述：</div>
                             <?php
                             $driver = new \Be\AdminPlugin\Form\Item\FormItemTinymce([
