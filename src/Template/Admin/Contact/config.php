@@ -3,18 +3,13 @@
 
 <be-page-content>
     <?php
-    $js = [];
-    $css = [];
     $formData = [];
-    $vueData = [];
-    $vueMethods = [];
-    $vueHooks = [];
-
+    $uiItems = new \Be\AdminPlugin\UiItem\UiItems();
     $rootUrl = \Be\Be::getRequest()->getRootUrl();
     ?>
 
     <div id="app" v-cloak>
-        <el-form ref="formRef" :model="formData" class="be-mb-200">
+        <el-form ref="formRef" :model="formData" class="be-mb-200" size="medium">
             <div class="be-row">
                 <div class="be-col-14">
                     <div class="be-p-150 be-bc-fff">
@@ -25,7 +20,7 @@
                             </div>
                             <div class="be-col be-pl-100">
                                 <el-form-item class="be-mt-50" prop="mapType">
-                                    <el-radio-group  size="medium" v-model="formData.mapType">
+                                    <el-radio-group v-model="formData.mapType">
                                         <el-radio-button label="baidu">百度地图</el-radio-button>
                                         <el-radio-button label="google">谷歌地图</el-radio-button>
                                     </el-radio-group>
@@ -42,7 +37,6 @@
                                         placeholder="请输入百度地图Key"
                                         v-model="formData.mapKeyBaidu"
                                         maxlength="100"
-                                        size="medium"
                                         show-word-limit>
                                 </el-input>
                             </el-form-item>
@@ -62,7 +56,6 @@
                                         placeholder="请输入Google地图Key"
                                         v-model="formData.mapKeyGoogle"
                                         maxlength="100"
-                                        size="medium"
                                         show-word-limit>
                                 </el-input>
                             </el-form-item>
@@ -96,7 +89,6 @@
                                     placeholder="请输入定位点标题"
                                     v-model="formData.markerTitle"
                                     maxlength="300"
-                                    size="medium"
                                     show-word-limit>
                             </el-input>
                         </el-form-item>
@@ -109,7 +101,6 @@
                                     placeholder="请输入定位点地址"
                                     v-model="formData.markerAddress"
                                     maxlength="300"
-                                    size="medium"
                                     show-word-limit>
                             </el-input>
                         </el-form-item>
@@ -121,7 +112,30 @@
                     <div class="be-pl-200">
 
                         <div class="be-p-150 be-bc-fff">
-                            <div class="be-mt-150">描述：</div>
+
+                            <div class="">电话：</div>
+                            <el-form-item class="be-mt-50" prop="phone">
+                                <el-input
+                                        type="text"
+                                        placeholder="请输入联系电话"
+                                        v-model="formData.phone"
+                                        maxlength="30">
+                                </el-input>
+                            </el-form-item>
+                            <?php $formData['phone'] = $this->configContact->phone; ?>
+
+                            <div class="be-mt-100">邮箱：</div>
+                            <el-form-item class="be-mt-50" prop="email">
+                                <el-input
+                                        type="text"
+                                        placeholder="请输入联系邮箱"
+                                        v-model="formData.email"
+                                        maxlength="30">
+                                </el-input>
+                            </el-form-item>
+                            <?php $formData['email'] = $this->configContact->email; ?>
+
+                            <div class="be-mt-100">描述：</div>
                             <?php
                             $driver = new \Be\AdminPlugin\Form\Item\FormItemTinymce([
                                 'name' => 'info',
@@ -135,41 +149,171 @@
 
                             $formData['info'] = $this->configContact->info;
 
-                            $jsX = $driver->getJs();
-                            if ($jsX) {
-                                $js = array_merge($js, $jsX);
-                            }
-
-                            $cssX = $driver->getCss();
-                            if ($cssX) {
-                                $css = array_merge($css, $cssX);
-                            }
-
-                            $vueDataX = $driver->getVueData();
-                            if ($vueDataX) {
-                                $vueData = \Be\Util\Arr::merge($vueData, $vueDataX);
-                            }
-
-                            $vueMethodsX = $driver->getVueMethods();
-                            if ($vueMethodsX) {
-                                $vueMethods = array_merge($vueMethods, $vueMethodsX);
-                            }
-
-                            $vueHooksX = $driver->getVueHooks();
-                            if ($vueHooksX) {
-                                foreach ($vueHooksX as $k => $v) {
-                                    if (isset($vueHooks[$k])) {
-                                        $vueHooks[$k] .= "\r\n" . $v;
-                                    } else {
-                                        $vueHooks[$k] = $v;
-                                    }
-                                }
-                            }
+                            $uiItems->add($driver);
                             ?>
+
+                            <div class="be-mt-100">工作时间：</div>
+                            <el-form-item class="be-mt-50" prop="workingHours">
+                                <el-switch v-model.number="formData.workingHours" :active-value="1" :inactive-value="0"></el-switch>
+                            </el-form-item>
+                            <?php $formData['workingHours'] = $this->configContact->workingHours; ?>
+
+                            <template v-if="formData.workingHours === 1">
+
+                                <div class="be-row">
+                                    <div class="be-col-auto">
+                                        标题：
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="标题"
+                                                v-model="formData.workingHoursTitle">
+                                        </el-input>
+                                        <?php $formData['workingHoursTitle'] = $this->configContact->workingHoursTitle; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周一"
+                                                v-model="formData.workingHoursMonday">
+                                        </el-input>
+                                        <?php $formData['workingHoursMonday'] = $this->configContact->workingHoursMonday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursMondayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursMondayRange'] = $this->configContact->workingHoursMondayRange; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周二"
+                                                v-model="formData.workingHoursTuesday">
+                                        </el-input>
+                                        <?php $formData['workingHoursTuesday'] = $this->configContact->workingHoursTuesday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursTuesdayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursTuesdayRange'] = $this->configContact->workingHoursTuesdayRange; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周三"
+                                                v-model="formData.workingHoursWednesday">
+                                        </el-input>
+                                        <?php $formData['workingHoursWednesday'] = $this->configContact->workingHoursWednesday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursWednesdayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursWednesdayRange'] = $this->configContact->workingHoursWednesdayRange; ?>
+                                    </div>
+                                </div>
+
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周四"
+                                                v-model="formData.workingHoursThursday">
+                                        </el-input>
+                                        <?php $formData['workingHoursthursday'] = $this->configContact->workingHoursthursday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursThursdayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursthursdayRange'] = $this->configContact->workingHoursthursdayRange; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周五"
+                                                v-model="formData.workingHoursFriday">
+                                        </el-input>
+                                        <?php $formData['workingHoursFriday'] = $this->configContact->workingHoursFriday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursFridayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursFridayRange'] = $this->configContact->workingHoursFridayRange; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周六"
+                                                v-model="formData.workingHoursSaturday">
+                                        </el-input>
+                                        <?php $formData['workingHoursSaturday'] = $this->configContact->workingHoursSaturday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursSaturdayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursSaturdayRange'] = $this->configContact->workingHoursSaturdayRange; ?>
+                                    </div>
+                                </div>
+
+                                <div class="be-row be-mt-50">
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="周日"
+                                                v-model="formData.workingHoursSunday">
+                                        </el-input>
+                                        <?php $formData['workingHoursSunday'] = $this->configContact->workingHoursSunday; ?>
+                                    </div>
+                                    <div class="be-col-auto">
+                                        <el-input
+                                                type="text"
+                                                placeholder="时间范围"
+                                                v-model="formData.workingHoursSundayRange">
+                                        </el-input>
+                                        <?php $formData['workingHoursSundayRange'] = $this->configContact->workingHoursSundayRange; ?>
+                                    </div>
+                                </div>
+
+                            </template>
+
                         </div>
 
                         <div class="be-mt-200 be-ta-right">
-                            <el-button size="medium" type="primary" :disabled="loading" @click="save">保存</el-button>
+                            <el-button type="primary" :disabled="loading" @click="save">保存</el-button>
                         </div>
                     </div>
 
