@@ -103,6 +103,25 @@
                             </el-input>
                         </el-form-item>
                         <?php $formData['markerAddress'] = $this->configContact->markerAddress; ?>
+
+                        
+                        <div class="be-mt-100">描述：</div>
+                        <?php
+                        $driver = new \Be\AdminPlugin\Form\Item\FormItemTinymce([
+                            'name' => 'info',
+                            'ui' => [
+                                'form-item' => [
+                                    'class' => 'be-mt-50'
+                                ],
+                            ],
+                        ]);
+                        echo $driver->getHtml();
+
+                        $formData['info'] = $this->configContact->info;
+
+                        $uiItems->add($driver);
+                        ?>
+
                     </div>
                 </div>
                 <div class="be-col-10">
@@ -132,23 +151,6 @@
                                 </el-input>
                             </el-form-item>
                             <?php $formData['email'] = $this->configContact->email; ?>
-
-                            <div class="be-mt-100">描述：</div>
-                            <?php
-                            $driver = new \Be\AdminPlugin\Form\Item\FormItemTinymce([
-                                'name' => 'info',
-                                'ui' => [
-                                    'form-item' => [
-                                        'class' => 'be-mt-50'
-                                    ],
-                                ],
-                            ]);
-                            echo $driver->getHtml();
-
-                            $formData['info'] = $this->configContact->info;
-
-                            $uiItems->add($driver);
-                            ?>
 
                             <div class="be-mt-100">工作时间：</div>
                             <el-form-item class="be-mt-50" prop="workingHours">
@@ -237,7 +239,7 @@
                                                 placeholder="周四"
                                                 v-model="formData.workingHoursThursday">
                                         </el-input>
-                                        <?php $formData['workingHoursthursday'] = $this->configContact->workingHoursthursday; ?>
+                                        <?php $formData['workingHoursThursday'] = $this->configContact->workingHoursThursday; ?>
                                     </div>
                                     <div class="be-col-auto">
                                         <el-input
@@ -245,7 +247,7 @@
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursThursdayRange">
                                         </el-input>
-                                        <?php $formData['workingHoursthursdayRange'] = $this->configContact->workingHoursthursdayRange; ?>
+                                        <?php $formData['workingHoursThursdayRange'] = $this->configContact->workingHoursThursdayRange; ?>
                                     </div>
                                 </div>
 
