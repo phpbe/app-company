@@ -28,8 +28,8 @@ class Contact
         $response->set('pageConfig', $pageConfig);
 
         $response->set('title', $pageConfig->title ?: '');
-        $response->set('metaKeywords', $pageConfig->metaDescription ?: '');
-        $response->set('metaDescription', $pageConfig->metaKeywords ?: '');
+        $response->set('metaDescription', $pageConfig->metaDescription ?: '');
+        $response->set('metaKeywords', $pageConfig->metaKeywords ?: '');
         $response->set('pageTitle', $pageConfig->pageTitle ?: ($pageConfig->title ?: ''));
 
         $response->display();
