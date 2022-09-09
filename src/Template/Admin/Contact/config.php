@@ -1,6 +1,4 @@
 
-
-
 <be-page-content>
     <?php
     $formData = [];
@@ -323,24 +321,14 @@
         </el-form>
 
     </div>
-    <?php
-    if (count($js) > 0) {
-        $js = array_unique($js);
-        foreach ($js as $x) {
-            echo '<script src="' . $x . '"></script>';
-        }
-    }
 
-    if (count($css) > 0) {
-        $css = array_unique($css);
-        foreach ($css as $x) {
-            echo '<link rel="stylesheet" type="text/css" href="' . $x . '" />';
-        }
-    }
+    <?php
+    echo $uiItems->getJs();
+    echo $uiItems->getCss();
     ?>
 
     <script>
-        let vueCenter = new Vue({
+        let vueForm = new Vue({
             el: '#app',
             data: {
                 formData: <?php echo json_encode($formData); ?>,
@@ -348,11 +336,7 @@
 
                 t: false
                 <?php
-                if ($vueData) {
-                    foreach ($vueData as $k => $v) {
-                        echo ',' . $k . ':' . json_encode($v);
-                    }
-                }
+                echo $uiItems->getVueData();
                 ?>
             },
             methods: {
@@ -397,62 +381,21 @@
                     this.formData.lng = lng;
                     this.formData.lat = lat;
                 }
+
                 <?php
-                if ($vueMethods) {
-                    foreach ($vueMethods as $k => $v) {
-                        echo ',' . $k . ':' . $v;
-                    }
-                }
-                ?>
-            },
-            created: function () {
-                <?php
-                if (isset($vueHooks['created'])) {
-                    echo $vueHooks['created'];
-                }
-                ?>
-            },
-            mounted: function () {
-                <?php
-                if (isset($vueHooks['mounted'])) {
-                    echo $vueHooks['mounted'];
-                }
-                ?>
-            },
-            updated: function () {
-                <?php
-                if (isset($vueHooks['updated'])) {
-                    echo $vueHooks['updated'];
-                }
+                echo $uiItems->getVueMethods();
                 ?>
             }
+
             <?php
-            if (isset($vueHooks['beforeCreate'])) {
-                echo ',beforeCreate: function () {' . $vueHooks['beforeCreate'] . '}';
-            }
-
-            if (isset($vueHooks['beforeMount'])) {
-                echo ',beforeMount: function () {' . $vueHooks['beforeMount'] . '}';
-            }
-
-            if (isset($vueHooks['beforeUpdate'])) {
-                echo ',beforeUpdate: function () {' . $vueHooks['beforeUpdate'] . '}';
-            }
-
-            if (isset($vueHooks['beforeDestroy'])) {
-                echo ',beforeDestroy: function () {' . $vueHooks['beforeDestroy'] . '}';
-            }
-
-            if (isset($vueHooks['destroyed'])) {
-                echo ',destroyed: function () {' . $vueHooks['destroyed'] . '}';
-            }
+            $uiItems->setVueHook('mounted', 'window.onbeforeunload = function(e) {e = e || window.event; if (e) { e.returnValue = ""; } return ""; };');
+            echo $uiItems->getVueHooks();
             ?>
         });
 
         function setLngLat(lng, lat) {
-            vueCenter.setLngLat(lng, lat);
+            vueForm.setLngLat(lng, lat);
         }
 
     </script>
-
 </be-page-content>
