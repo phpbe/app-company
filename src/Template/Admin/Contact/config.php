@@ -104,7 +104,7 @@
                         </el-form-item>
                         <?php $formData['markerAddress'] = $this->configContact->markerAddress; ?>
 
-                        
+
                         <div class="be-mt-100">描述：</div>
                         <?php
                         $driver = new \Be\AdminPlugin\Form\Item\FormItemTinymce([
@@ -390,7 +390,7 @@
             }
 
             <?php
-            $uiItems->setVueHook('mounted', 'window.onbeforeunload = function(e) {e = e || window.event; if (e) { e.returnValue = ""; } return ""; };');
+            //$uiItems->setVueHook('mounted', 'window.onbeforeunload = function(e) {e = e || window.event; if (e) { e.returnValue = ""; } return ""; };');
             echo $uiItems->getVueHooks();
             ?>
         });

@@ -15,14 +15,35 @@ class Message
     /**
      * 提交留言
      *
-     * @BeRoute("/contact/message/save")
+     * @BeRoute("/message")
+     */
+    public function write()
+    {
+        $request = Be::getRequest();
+        $response = Be::getResponse();
+
+        $pageConfig = $response->getPageConfig();
+        $response->set('pageConfig', $pageConfig);
+
+        $response->set('title', $pageConfig->title ?: '');
+        $response->set('metaDescription', $pageConfig->metaDescription ?: '');
+        $response->set('metaKeywords', $pageConfig->metaKeywords ?: '');
+        $response->set('pageTitle', $pageConfig->pageTitle ?: ($pageConfig->title ?: ''));
+
+        $response->display();
+    }
+
+    /**
+     * 提交留言
+     *
+     * @BeRoute("/message/save")
      */
     public function save()
     {
         $request = Be::getRequest();
         $response = Be::getResponse();
         try {
-            $tupleMessage = Be::getTuple('company_contact_message');
+            $tupleMessage = Be::getTuple('company_message');
 
             $pageUrl = $request->post('page_url', '');
             if (mb_strlen($pageUrl) > 300) {

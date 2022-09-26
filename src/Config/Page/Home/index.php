@@ -5,6 +5,23 @@ namespace Be\App\Company\Config\Page\Home;
 class index
 {
 
+    public int $middle = 1;
+
+    public array $middleSections = [
+        [
+            'name' => 'App.Company.Story',
+        ],
+        [
+            'name' => 'App.Company.Team',
+        ],
+        [
+            'name' => 'App.Company.Feedback',
+        ],
+        [
+            'name' => 'App.Company.Contact',
+        ],
+    ];
+
 
     /**
      * @BeConfigItem("HEAD头标题",
