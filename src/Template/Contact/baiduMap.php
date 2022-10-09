@@ -24,7 +24,7 @@
 
     map.centerAndZoom(point, 16); // 初始化地图,设置中心点坐标和地图级别
 
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    //map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
     map.addControl(new BMapGL.ScaleControl()); // 添加比例尺控件
     map.addControl(new BMapGL.ZoomControl()); // 添加缩放控件
     map.addControl(new BMapGL.NavigationControl3D()); // 添加3D控件

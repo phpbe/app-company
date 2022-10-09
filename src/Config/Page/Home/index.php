@@ -9,16 +9,10 @@ class index
 
     public array $middleSections = [
         [
-            'name' => 'App.Company.Story',
-        ],
-        [
             'name' => 'App.Company.Team',
         ],
         [
-            'name' => 'App.Company.Feedback',
-        ],
-        [
-            'name' => 'App.Company.Contact',
+            'name' => 'App.Company.ContactMap',
         ],
     ];
 
