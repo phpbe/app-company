@@ -27,7 +27,7 @@ class index
      *     driver = "FormItemInput"
      * )
      */
-    public string $title = '';
+    public string $title = '联系我们';
 
     /**
      * @BeConfigItem("Meta描述",

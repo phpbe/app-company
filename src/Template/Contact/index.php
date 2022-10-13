@@ -6,7 +6,7 @@
         </div>
         <div class="be-col-0 be-md-col-1"></div>
         <div class="be-col-24 be-md-col-10">
-            <?php echo $this->configContact->info; ?>
+            <?php echo $this->configContact->description; ?>
         </div>
     </div>
 </be-page-content>
