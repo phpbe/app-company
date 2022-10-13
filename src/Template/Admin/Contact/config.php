@@ -161,12 +161,13 @@
                             <template v-if="formData.workingHours === 1">
 
                                 <div class="be-row">
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-lh-250">
                                         标题：
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="标题"
                                                 v-model="formData.workingHoursTitle">
                                         </el-input>
@@ -178,14 +179,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周一"
                                                 v-model="formData.workingHoursMonday">
                                         </el-input>
                                         <?php $formData['workingHoursMonday'] = $this->configContact->workingHoursMonday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursMondayRange">
                                         </el-input>
@@ -197,14 +200,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周二"
                                                 v-model="formData.workingHoursTuesday">
                                         </el-input>
                                         <?php $formData['workingHoursTuesday'] = $this->configContact->workingHoursTuesday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursTuesdayRange">
                                         </el-input>
@@ -216,14 +221,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周三"
                                                 v-model="formData.workingHoursWednesday">
                                         </el-input>
                                         <?php $formData['workingHoursWednesday'] = $this->configContact->workingHoursWednesday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursWednesdayRange">
                                         </el-input>
@@ -236,14 +243,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周四"
                                                 v-model="formData.workingHoursThursday">
                                         </el-input>
                                         <?php $formData['workingHoursThursday'] = $this->configContact->workingHoursThursday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursThursdayRange">
                                         </el-input>
@@ -255,14 +264,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周五"
                                                 v-model="formData.workingHoursFriday">
                                         </el-input>
                                         <?php $formData['workingHoursFriday'] = $this->configContact->workingHoursFriday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursFridayRange">
                                         </el-input>
@@ -274,14 +285,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周六"
                                                 v-model="formData.workingHoursSaturday">
                                         </el-input>
                                         <?php $formData['workingHoursSaturday'] = $this->configContact->workingHoursSaturday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursSaturdayRange">
                                         </el-input>
@@ -293,14 +306,16 @@
                                     <div class="be-col-auto">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="周日"
                                                 v-model="formData.workingHoursSunday">
                                         </el-input>
                                         <?php $formData['workingHoursSunday'] = $this->configContact->workingHoursSunday; ?>
                                     </div>
-                                    <div class="be-col-auto">
+                                    <div class="be-col-auto be-pl-100">
                                         <el-input
                                                 type="text"
+                                                size="medium"
                                                 placeholder="时间范围"
                                                 v-model="formData.workingHoursSundayRange">
                                         </el-input>
