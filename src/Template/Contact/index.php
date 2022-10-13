@@ -14,12 +14,12 @@
 
 <be-page-content>
     <div class="be-row">
-        <div class="be-col-24 be-md-col-13 be-pb-200">
+        <div class="be-col-24 be-lg-col-13 be-pb-200">
             <iframe src="<?php echo beUrl('Company.Contact.'.$this->configContact->mapType.'Map'); ?>" style="width:100%;height:100%;min-height:400px;" scrolling="no" frameborder="0"></iframe>
             <a href="<?php echo beUrl('Company.Contact.'.$this->configContact->mapType.'Map'); ?>" target="_blank">全屏查看地图</a>
         </div>
-        <div class="be-col-0 be-md-col-1"></div>
-        <div class="be-col-24 be-md-col-10">
+        <div class="be-col-0 be-lg-col-1"></div>
+        <div class="be-col-24 be-lg-col-10">
             <?php echo $this->configContact->description; ?>
 
             <?php if ($this->configContact->phone !== '' || $this->configContact->email !== '') { ?>
@@ -55,37 +55,37 @@
                 <div class="be-fs-120 be-fw-bold be-c-777"><?php echo $this->configContact->workingHoursTitle; ?></div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursMonday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursMondayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursTuesday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursTuesdayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursWednesday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursWednesdayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursThursday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursThursdayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursFriday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursFridayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursSaturday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursSaturdayRange; ?></div></div>
                 </div>
                 <div class="be-row be-mt-150">
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursSunday; ?></div></div>
-                    <div class="be-col"><div class="be-row working-hours-item-line"></div></div>
+                    <div class="be-col"><div class="working-hours-item-line"></div></div>
                     <div class="be-col-auto"><div class="be-c-777"><?php echo $this->configContact->workingHoursSundayRange; ?></div></div>
                 </div>
             </div>
