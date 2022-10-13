@@ -1,6 +1,6 @@
 <?php
 
-namespace Be\App\Company\Config\Page\Contact;
+namespace Be\App\Company\Config\Page\Team;
 
 class index
 {
