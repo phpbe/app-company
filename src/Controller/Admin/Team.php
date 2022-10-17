@@ -2,11 +2,14 @@
 namespace Be\App\Company\Controller\Admin;
 
 use Be\AdminPlugin\Detail\Item\DetailItemAvatar;
+use Be\AdminPlugin\Detail\Item\DetailItemHtml;
 use Be\AdminPlugin\Detail\Item\DetailItemSwitch;
 use Be\AdminPlugin\Form\Item\FormItemAvatar;
+use Be\AdminPlugin\Form\Item\FormItemInputTextArea;
 use Be\AdminPlugin\Form\Item\FormItemSelect;
 use Be\AdminPlugin\Form\Item\FormItemStorageImage;
 use Be\AdminPlugin\Form\Item\FormItemSwitch;
+use Be\AdminPlugin\Form\Item\FormItemTinymce;
 use Be\AdminPlugin\Table\Item\TableItemAvatar;
 use Be\AdminPlugin\Table\Item\TableItemImage;
 use Be\AdminPlugin\Table\Item\TableItemLink;
@@ -100,6 +103,9 @@ class Team
                             'label' => '新增团队成员',
                             'task' => 'create',
                             'target' => 'drawer', // 'ajax - ajax请求 / dialog - 对话框窗口 / drawer - 抽屉 / self - 当前页面 / blank - 新页面'
+                            'drawer' => [
+                              'width' => '80%',
+                            ],
                             'ui' => [
                                 'icon' => 'el-icon-plus',
                                 'type' => 'primary',
@@ -187,6 +193,9 @@ class Team
                             'driver' => TableItemLink::class,
                             'task' => 'detail',
                             'target' => 'drawer',
+                            'drawer' => [
+                                'width' => '80%',
+                            ],
                         ],
                         [
                             'name' => 'job',
@@ -215,6 +224,9 @@ class Team
                                 'tooltip' => '编辑',
                                 'task' => 'edit',
                                 'target' => 'drawer',
+                                'drawer' => [
+                                    'width' => '80%',
+                                ],
                                 'ui' => [
                                     ':underline' => 'false',
                                     'style' => 'font-size: 20px;',
@@ -265,6 +277,27 @@ class Team
                             'label' => '职位',
                         ],
                         [
+                            'name' => 'summary',
+                            'label' => '简介',
+                        ],
+                        [
+                            'name' => 'description',
+                            'label' => '描述',
+                            'driver' => DetailItemHtml::class,
+                        ],
+                        [
+                            'name' => 'im_wechat',
+                            'label' => '微信',
+                        ],
+                        [
+                            'name' => 'im_weibo',
+                            'label' => '微博',
+                        ],
+                        [
+                            'name' => 'im_qq',
+                            'label' => '微博',
+                        ],
+                        [
                             'name' => 'im_facebook',
                             'label' => 'Facebook',
                         ],
@@ -277,12 +310,20 @@ class Team
                             'label' => 'Instagram',
                         ],
                         [
-                            'name' => 'im_wechat',
-                            'label' => '微信',
+                            'name' => 'phone',
+                            'label' => '电话',
                         ],
                         [
-                            'name' => 'im_weibo',
-                            'label' => '微博',
+                            'name' => 'mobile',
+                            'label' => '手机',
+                        ],
+                        [
+                            'name' => 'email',
+                            'label' => '邮箱',
+                        ],
+                        [
+                            'name' => 'website',
+                            'label' => '个人网站',
                         ],
                         [
                             'name' => 'is_enable',
@@ -322,6 +363,31 @@ class Team
                             'required' => true,
                         ],
                         [
+                            'name' => 'summary',
+                            'label' => '简介',
+                            'driver' => FormItemInputTextArea::class,
+                        ],
+                        [
+                            'name' => 'description',
+                            'label' => '描述',
+                            'driver' => FormItemTinymce::class,
+                            'option' => [
+                                'toolbar_sticky_offset' => 0,
+                            ]
+                        ],
+                        [
+                            'name' => 'im_wechat',
+                            'label' => '微信',
+                        ],
+                        [
+                            'name' => 'im_weibo',
+                            'label' => '微博',
+                        ],
+                        [
+                            'name' => 'im_qq',
+                            'label' => 'QQ',
+                        ],
+                        [
                             'name' => 'im_facebook',
                             'label' => 'Facebook',
                         ],
@@ -334,12 +400,16 @@ class Team
                             'label' => 'Instagram',
                         ],
                         [
-                            'name' => 'im_wechat',
-                            'label' => '微信',
+                            'name' => 'phone',
+                            'label' => '电话',
                         ],
                         [
-                            'name' => 'im_weibo',
-                            'label' => '微博',
+                            'name' => 'mobile',
+                            'label' => '手机',
+                        ],
+                        [
+                            'name' => 'website',
+                            'label' => '个人网站',
                         ],
                         [
                             'name' => 'is_enable',
@@ -348,12 +418,6 @@ class Team
                             'driver' => FormItemSwitch::class,
                         ],
                     ]
-                ],
-                'events' => [
-                    'before' => function (Tuple &$tuple) {
-                        $tuple->create_time = date('Y-m-d H:i:s');
-                        $tuple->update_time = date('Y-m-d H:i:s');
-                    },
                 ],
             ],
 
@@ -378,6 +442,31 @@ class Team
                             'required' => true,
                         ],
                         [
+                            'name' => 'summary',
+                            'label' => '简介',
+                            'driver' => FormItemInputTextArea::class,
+                        ],
+                        [
+                            'name' => 'description',
+                            'label' => '描述',
+                            'driver' => FormItemTinymce::class,
+                            'option' => [
+                                'toolbar_sticky_offset' => 0,
+                            ],
+                        ],
+                        [
+                            'name' => 'im_wechat',
+                            'label' => '微信',
+                        ],
+                        [
+                            'name' => 'im_weibo',
+                            'label' => '微博',
+                        ],
+                        [
+                            'name' => 'im_qq',
+                            'label' => 'QQ',
+                        ],
+                        [
                             'name' => 'im_facebook',
                             'label' => 'Facebook',
                         ],
@@ -390,12 +479,16 @@ class Team
                             'label' => 'Instagram',
                         ],
                         [
-                            'name' => 'im_wechat',
-                            'label' => '微信',
+                            'name' => 'phone',
+                            'label' => '电话',
                         ],
                         [
-                            'name' => 'im_weibo',
-                            'label' => '微博',
+                            'name' => 'mobile',
+                            'label' => '手机',
+                        ],
+                        [
+                            'name' => 'website',
+                            'label' => '个人网站',
                         ],
                         [
                             'name' => 'is_enable',
@@ -403,19 +496,6 @@ class Team
                             'driver' => FormItemSwitch::class,
                         ],
                     ]
-                ],
-                'events' => [
-                    'before' => function (Tuple &$tuple) {
-                        $tuple->update_time = date('Y-m-d H:i:s');
-                    }
-                ]
-            ],
-
-            'fieldEdit' => [
-                'events' => [
-                    'before' => function ($tuple) {
-                        $tuple->update_time = date('Y-m-d H:i:s');
-                    },
                 ],
             ],
 
