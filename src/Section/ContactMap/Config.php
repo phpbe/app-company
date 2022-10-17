@@ -23,6 +23,11 @@ class Config
     public string $width = 'fullWidth';
 
     /**
+     * @BeConfigItem("高度", driver = "FormItemInput")
+     */
+    public string $height = '500px';
+
+    /**
      * @BeConfigItem("内边距 （手机端）",
      *     driver = "FormItemInput",
      *     description = "上右下左（CSS padding 语法）"

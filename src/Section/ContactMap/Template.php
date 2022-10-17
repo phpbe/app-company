@@ -22,7 +22,7 @@ class Template extends Section
 
         echo '#' . $this->id . ' .contact-map iframe {';
         echo 'width: 100%;';
-        echo 'height: 450px;';
+        echo 'height: ' . $this->config->height . ';';
         //echo 'filter: brightness( 62% ) contrast( 100% ) saturate( 0% ) blur( 0px ) hue-rotate( 22deg );';
         echo '}';
 
