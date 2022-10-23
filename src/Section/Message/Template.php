@@ -75,7 +75,7 @@ class Template extends Section
             echo '</div>';
 
             echo '<div class="be-mt-150">';
-            echo '<input type="submit" class="be-btn be-btn-main" value="保 存">';
+            echo '<input type="submit" class="be-btn be-btn-major" value="保 存">';
             echo '<input type="reset" class="be-btn be-ml-100" value="重 置">';
             echo '</div>';
 

@@ -1,12 +1,12 @@
 <be-head>
     <style type="text/css">
         .working-hours-items {
-            border: var(--main-color-8) 2px solid;
+            border: var(--major-color-8) 2px solid;
             padding: 2rem;
         }
 
         .working-hours-item-line {
-            border-top: var(--main-color-6) 1px dotted;
+            border-top: var(--major-color-6) 1px dotted;
             margin: .6rem 1rem 0 1rem;
         }
     </style>
@@ -27,7 +27,7 @@
 
                 <?php if ($this->configContact->phone !== '') { ?>
                 <div class="be-col-auto">
-                    <div class="be-fs-150 be-p-50 be-bc-main be-c-fff" style="border-radius: 50%;">
+                    <div class="be-fs-150 be-p-50 be-bc-major be-c-fff" style="border-radius: 50%;">
                         <i class="bi-telephone-fill"></i>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 
                 <?php if ( $this->configContact->email !== '') { ?>
                 <div class="be-col-auto">
-                    <div class="be-fs-150 be-p-50 be-bc-main be-c-fff" style="border-radius: 50%;">
+                    <div class="be-fs-150 be-p-50 be-bc-major be-c-fff" style="border-radius: 50%;">
                         <i class="bi-envelope-fill"></i>
                     </div>
                 </div>
