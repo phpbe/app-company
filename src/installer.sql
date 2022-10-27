@@ -14,7 +14,6 @@ ALTER TABLE `company_contact_message`
 ADD PRIMARY KEY (`id`),
 ADD KEY `create_time` (`create_time`);
 
-
 CREATE TABLE `company_team` (
 `id` varchar(36) NOT NULL DEFAULT 'uuid()' COMMENT 'UUID',
 `avatar` varchar(120) NOT NULL DEFAULT '' COMMENT '头像',
@@ -22,12 +21,13 @@ CREATE TABLE `company_team` (
 `job` varchar(60) NOT NULL DEFAULT '' COMMENT '职位',
 `summary` varchar(500) NOT NULL DEFAULT '' COMMENT '摘要',
 `description` text NOT NULL COMMENT '描述',
-`im_wechat` varchar(120) NOT NULL DEFAULT '' COMMENT '微信',
-`im_weibo` varchar(120) NOT NULL DEFAULT '' COMMENT '微博',
-`im_qq` varchar(20) NOT NULL DEFAULT '' COMMENT 'QQ',
-`im_facebook` varchar(120) NOT NULL DEFAULT '' COMMENT 'Facebook',
-`im_twitter` varchar(120) NOT NULL DEFAULT '' COMMENT 'Twitter',
-`im_instagram` varchar(120) NOT NULL DEFAULT '' COMMENT 'Instagram',
+`account_wechat` varchar(120) NOT NULL DEFAULT '' COMMENT '微信',
+`account_weibo` varchar(120) NOT NULL DEFAULT '' COMMENT '微博',
+`account_qq` varchar(20) NOT NULL DEFAULT '' COMMENT 'QQ',
+`account_facebook` varchar(120) NOT NULL DEFAULT '' COMMENT 'Facebook',
+`account_twitter` varchar(120) NOT NULL DEFAULT '' COMMENT 'Twitter',
+`account_instagram` varchar(120) NOT NULL DEFAULT '' COMMENT 'Instagram',
+`account_linkedin` varchar(120) NOT NULL COMMENT 'LinkedIn',
 `phone` varchar(30) NOT NULL DEFAULT '' COMMENT '电话',
 `mobile` varchar(30) NOT NULL DEFAULT '' COMMENT '手机',
 `email` varchar(120) NOT NULL DEFAULT '' COMMENT '邮箱',
@@ -38,7 +38,5 @@ CREATE TABLE `company_team` (
 `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='团队';
 
-
 ALTER TABLE `company_team`
 ADD PRIMARY KEY (`id`);
-

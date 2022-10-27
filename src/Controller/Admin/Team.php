@@ -286,28 +286,32 @@ class Team
                             'driver' => DetailItemHtml::class,
                         ],
                         [
-                            'name' => 'im_wechat',
+                            'name' => 'account_wechat',
                             'label' => '微信',
                         ],
                         [
-                            'name' => 'im_weibo',
+                            'name' => 'account_weibo',
                             'label' => '微博',
                         ],
                         [
-                            'name' => 'im_qq',
+                            'name' => 'account_qq',
                             'label' => '微博',
                         ],
                         [
-                            'name' => 'im_facebook',
+                            'name' => 'account_facebook',
                             'label' => 'Facebook',
                         ],
                         [
-                            'name' => 'im_twitter',
+                            'name' => 'account_twitter',
                             'label' => 'Twitter',
                         ],
                         [
-                            'name' => 'im_instagram',
+                            'name' => 'account_instagram',
                             'label' => 'Instagram',
+                        ],
+                        [
+                            'name' => 'account_linkedin',
+                            'label' => 'Linkedin',
                         ],
                         [
                             'name' => 'phone',
@@ -376,28 +380,32 @@ class Team
                             ]
                         ],
                         [
-                            'name' => 'im_wechat',
+                            'name' => 'account_wechat',
                             'label' => '微信',
                         ],
                         [
-                            'name' => 'im_weibo',
+                            'name' => 'account_weibo',
                             'label' => '微博',
                         ],
                         [
-                            'name' => 'im_qq',
+                            'name' => 'account_qq',
                             'label' => 'QQ',
                         ],
                         [
-                            'name' => 'im_facebook',
+                            'name' => 'account_facebook',
                             'label' => 'Facebook',
                         ],
                         [
-                            'name' => 'im_twitter',
+                            'name' => 'account_twitter',
                             'label' => 'Twitter',
                         ],
                         [
-                            'name' => 'im_instagram',
+                            'name' => 'account_instagram',
                             'label' => 'Instagram',
+                        ],
+                        [
+                            'name' => 'account_linkedin',
+                            'label' => 'Linkedin',
                         ],
                         [
                             'name' => 'phone',
@@ -455,28 +463,32 @@ class Team
                             ],
                         ],
                         [
-                            'name' => 'im_wechat',
+                            'name' => 'account_wechat',
                             'label' => '微信',
                         ],
                         [
-                            'name' => 'im_weibo',
+                            'name' => 'account_weibo',
                             'label' => '微博',
                         ],
                         [
-                            'name' => 'im_qq',
+                            'name' => 'account_qq',
                             'label' => 'QQ',
                         ],
                         [
-                            'name' => 'im_facebook',
+                            'name' => 'account_facebook',
                             'label' => 'Facebook',
                         ],
                         [
-                            'name' => 'im_twitter',
+                            'name' => 'account_twitter',
                             'label' => 'Twitter',
                         ],
                         [
-                            'name' => 'im_instagram',
+                            'name' => 'account_instagram',
                             'label' => 'Instagram',
+                        ],
+                        [
+                            'name' => 'account_linkedin',
+                            'label' => 'Linkedin',
                         ],
                         [
                             'name' => 'phone',
