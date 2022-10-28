@@ -4,7 +4,7 @@ namespace Be\App\Company\Controller\Admin;
 use Be\Be;
 
 /**
- * @BeMenuGroup("联系我们", ordering="2", icon="el-icon-phone-outline")
+ * @BeMenuGroup("联系我们", ordering="1", icon="el-icon-phone-outline")
  * @BePermissionGroup("联系我们", ordering="2")
  */
 class Contact
@@ -13,8 +13,8 @@ class Contact
     /**
      * 地址信息 - 设置
      *
-     * @BeMenu("地址信息", ordering="2.1", icon="el-icon-map-location")
-     * @BePermission("地址信息", ordering="2.1")
+     * @BeMenu("地址信息", ordering="1.1", icon="el-icon-map-location")
+     * @BePermission("地址信息", ordering="1.1")
      */
     public function config()
     {
@@ -43,7 +43,7 @@ class Contact
 
     /**
      * 地址信息 - 设置
-     * @BePermission("地址信息", ordering="2.1")
+     * @BePermission("地址信息", ordering="1.1")
      */
 	public function googleMap()
 	{
@@ -59,7 +59,7 @@ class Contact
     /**
      * 地址信息 - 设置
      *
-     * @BePermission("地址信息", ordering="2.1")
+     * @BePermission("地址信息", ordering="1.1")
      */
 	public function baiduMap()
 	{

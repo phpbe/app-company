@@ -17,8 +17,8 @@ class Message
     /**
      * 留言
      *
-     * @BeMenu("留言", ordering="2.2", icon="el-icon-message")
-     * @BePermission("留言", ordering="2.2")
+     * @BeMenu("留言", ordering="1.2", icon="el-icon-message")
+     * @BePermission("留言", ordering="1.2")
      */
     public function messages()
     {

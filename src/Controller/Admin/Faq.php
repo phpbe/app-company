@@ -1,42 +1,34 @@
 <?php
 namespace Be\App\Company\Controller\Admin;
 
-use Be\AdminPlugin\Detail\Item\DetailItemAvatar;
-use Be\AdminPlugin\Detail\Item\DetailItemHtml;
 use Be\AdminPlugin\Detail\Item\DetailItemSwitch;
 use Be\AdminPlugin\Form\Item\FormItemInputTextArea;
-use Be\AdminPlugin\Form\Item\FormItemStorageImage;
 use Be\AdminPlugin\Form\Item\FormItemSwitch;
-use Be\AdminPlugin\Form\Item\FormItemTinymce;
-use Be\AdminPlugin\Table\Item\TableItemAvatar;
 use Be\AdminPlugin\Table\Item\TableItemLink;
 use Be\AdminPlugin\Table\Item\TableItemSelection;
 use Be\AdminPlugin\Table\Item\TableItemSwitch;
 use Be\AdminPlugin\Toolbar\Item\ToolbarItemDropDown;
 use Be\Be;
-use Be\Db\Tuple;
-use Be\Util\Crypt\Random;
 
 /**
- * @BePermissionGroup("团队", ordering="1")
+ * @BePermissionGroup("常见问题", ordering="5")
  */
-class Team
+class Faq
 {
 
-
     /**
-     * 团队 - 设置
+     * 常见问题
      *
-     * @BeMenu("团队成员", ordering="2.1", icon="el-icon-user-solid")
-     * @BePermission("团队成员", ordering="2.1")
+     * @BeMenu("常见问题", ordering="5.1", icon="bi-question-circle")
+     * @BePermission("常见问题", ordering="5.1")
      */
-    public function members()
+    public function questions()
     {
         Be::getAdminPlugin('Curd')->setting([
-            'label' => '团队成员',
-            'table' => 'company_team',
+            'label' => '常见问题',
+            'table' => 'company_faq',
             'grid' => [
-                'title' => '团队成员',
+                'title' => '常见问题',
 
                 'filter' => [
                     ['is_delete', '=', '0'],
@@ -57,8 +49,8 @@ class Team
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'name',
-                            'label' => '名称',
+                            'name' => 'question',
+                            'label' => '问题',
                         ],
                     ],
                 ],
@@ -97,11 +89,11 @@ class Team
                 'titleRightToolbar' => [
                     'items' => [
                         [
-                            'label' => '新增团队成员',
+                            'label' => '新增常见问题',
                             'task' => 'create',
                             'target' => 'drawer', // 'ajax - ajax请求 / dialog - 对话框窗口 / drawer - 抽屉 / self - 当前页面 / blank - 新页面'
                             'drawer' => [
-                              'width' => '80%',
+                              'width' => '60%',
                             ],
                             'ui' => [
                                 'icon' => 'el-icon-plus',
@@ -167,37 +159,15 @@ class Team
                             'width' => '50',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'width' => '90',
-                            'align' => 'left',
-                            'driver' => TableItemAvatar::class,
-                            'value' => function ($row) {
-                                if ($row['avatar']) {
-                                    return $row['avatar'];
-                                } else {
-                                    return Be::getProperty('App.Company')->getWwwUrl() . '/images/team/avatar/default.jpg';
-                                }
-                            },
-                            'ui' => [
-                                'style' => 'max-width: 60px; max-height: 60px'
-                            ],
-                        ],
-                        [
-                            'name' => 'name',
-                            'label' => '名称',
+                            'name' => 'question',
+                            'label' => '问题',
                             'align' => 'left',
                             'driver' => TableItemLink::class,
                             'task' => 'detail',
                             'target' => 'drawer',
                             'drawer' => [
-                                'width' => '80%',
+                                'width' => '60%',
                             ],
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'width' => '300',
                         ],
                         [
                             'name' => 'is_enable',
@@ -222,7 +192,7 @@ class Team
                                 'task' => 'edit',
                                 'target' => 'drawer',
                                 'drawer' => [
-                                    'width' => '80%',
+                                    'width' => '60%',
                                 ],
                                 'ui' => [
                                     ':underline' => 'false',
@@ -261,70 +231,12 @@ class Team
                             'label' => 'ID',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => DetailItemAvatar::class,
+                            'name' => 'question',
+                            'label' => '问题',
                         ],
                         [
-                            'name' => 'name',
-                            'label' => '名称',
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                        ],
-                        [
-                            'name' => 'summary',
-                            'label' => '简介',
-                        ],
-                        [
-                            'name' => 'description',
-                            'label' => '描述',
-                            'driver' => DetailItemHtml::class,
-                        ],
-                        [
-                            'name' => 'account_wechat',
-                            'label' => '微信',
-                        ],
-                        [
-                            'name' => 'account_weibo',
-                            'label' => '微博',
-                        ],
-                        [
-                            'name' => 'account_qq',
-                            'label' => '微博',
-                        ],
-                        [
-                            'name' => 'account_facebook',
-                            'label' => 'Facebook',
-                        ],
-                        [
-                            'name' => 'account_twitter',
-                            'label' => 'Twitter',
-                        ],
-                        [
-                            'name' => 'account_instagram',
-                            'label' => 'Instagram',
-                        ],
-                        [
-                            'name' => 'account_linkedin',
-                            'label' => 'Linkedin',
-                        ],
-                        [
-                            'name' => 'phone',
-                            'label' => '电话',
-                        ],
-                        [
-                            'name' => 'mobile',
-                            'label' => '手机',
-                        ],
-                        [
-                            'name' => 'email',
-                            'label' => '邮箱',
-                        ],
-                        [
-                            'name' => 'website',
-                            'label' => '个人网站',
+                            'name' => 'answer',
+                            'label' => '答案',
                         ],
                         [
                             'name' => 'is_enable',
@@ -344,77 +256,18 @@ class Team
             ],
 
             'create' => [
-                'title' => '新增团队成员',
+                'title' => '新增常见问题',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => FormItemStorageImage::class,
+                            'name' => 'question',
+                            'label' => '问题',
                         ],
                         [
-                            'name' => 'name',
-                            'label' => '名称',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'summary',
-                            'label' => '简介',
+                            'name' => 'answer',
+                            'label' => '答案',
                             'driver' => FormItemInputTextArea::class,
-                        ],
-                        [
-                            'name' => 'description',
-                            'label' => '描述',
-                            'driver' => FormItemTinymce::class,
-                            'option' => [
-                                'toolbar_sticky_offset' => 0,
-                            ]
-                        ],
-                        [
-                            'name' => 'account_wechat',
-                            'label' => '微信',
-                        ],
-                        [
-                            'name' => 'account_weibo',
-                            'label' => '微博',
-                        ],
-                        [
-                            'name' => 'account_qq',
-                            'label' => 'QQ',
-                        ],
-                        [
-                            'name' => 'account_facebook',
-                            'label' => 'Facebook',
-                        ],
-                        [
-                            'name' => 'account_twitter',
-                            'label' => 'Twitter',
-                        ],
-                        [
-                            'name' => 'account_instagram',
-                            'label' => 'Instagram',
-                        ],
-                        [
-                            'name' => 'account_linkedin',
-                            'label' => 'Linkedin',
-                        ],
-                        [
-                            'name' => 'phone',
-                            'label' => '电话',
-                        ],
-                        [
-                            'name' => 'mobile',
-                            'label' => '手机',
-                        ],
-                        [
-                            'name' => 'website',
-                            'label' => '个人网站',
                         ],
                         [
                             'name' => 'is_enable',
@@ -427,77 +280,18 @@ class Team
             ],
 
             'edit' => [
-                'title' => '编辑团队成员',
+                'title' => '编辑常见问题',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => FormItemStorageImage::class,
+                            'name' => 'question',
+                            'label' => '问题',
                         ],
                         [
-                            'name' => 'name',
-                            'label' => '名称',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'summary',
-                            'label' => '简介',
+                            'name' => 'answer',
+                            'label' => '答案',
                             'driver' => FormItemInputTextArea::class,
-                        ],
-                        [
-                            'name' => 'description',
-                            'label' => '描述',
-                            'driver' => FormItemTinymce::class,
-                            'option' => [
-                                'toolbar_sticky_offset' => 0,
-                            ],
-                        ],
-                        [
-                            'name' => 'account_wechat',
-                            'label' => '微信',
-                        ],
-                        [
-                            'name' => 'account_weibo',
-                            'label' => '微博',
-                        ],
-                        [
-                            'name' => 'account_qq',
-                            'label' => 'QQ',
-                        ],
-                        [
-                            'name' => 'account_facebook',
-                            'label' => 'Facebook',
-                        ],
-                        [
-                            'name' => 'account_twitter',
-                            'label' => 'Twitter',
-                        ],
-                        [
-                            'name' => 'account_instagram',
-                            'label' => 'Instagram',
-                        ],
-                        [
-                            'name' => 'account_linkedin',
-                            'label' => 'Linkedin',
-                        ],
-                        [
-                            'name' => 'phone',
-                            'label' => '电话',
-                        ],
-                        [
-                            'name' => 'mobile',
-                            'label' => '手机',
-                        ],
-                        [
-                            'name' => 'website',
-                            'label' => '个人网站',
                         ],
                         [
                             'name' => 'is_enable',
