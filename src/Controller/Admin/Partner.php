@@ -1,13 +1,10 @@
 <?php
 namespace Be\App\Company\Controller\Admin;
 
-use Be\AdminPlugin\Detail\Item\DetailItemAvatar;
 use Be\AdminPlugin\Detail\Item\DetailItemImage;
 use Be\AdminPlugin\Detail\Item\DetailItemSwitch;
-use Be\AdminPlugin\Form\Item\FormItemInputTextArea;
 use Be\AdminPlugin\Form\Item\FormItemStorageImage;
 use Be\AdminPlugin\Form\Item\FormItemSwitch;
-use Be\AdminPlugin\Table\Item\TableItemAvatar;
 use Be\AdminPlugin\Table\Item\TableItemImage;
 use Be\AdminPlugin\Table\Item\TableItemLink;
 use Be\AdminPlugin\Table\Item\TableItemSelection;
@@ -16,24 +13,24 @@ use Be\AdminPlugin\Toolbar\Item\ToolbarItemDropDown;
 use Be\Be;
 
 /**
- * @BePermissionGroup("客户评价", ordering="3")
+ * @BePermissionGroup("合作伙伴", ordering="4")
  */
-class Feedback
+class Partner
 {
 
     /**
-     * 客户评价
+     * 合作伙伴
      *
-     * @BeMenu("客户评价", ordering="3.1", icon="bi-quote")
-     * @BePermission("客户评价", ordering="3.1")
+     * @BeMenu("合作伙伴", ordering="4.1", icon="bi-people")
+     * @BePermission("合作伙伴", ordering="4.1")
      */
-    public function feedbacks()
+    public function partners()
     {
         Be::getAdminPlugin('Curd')->setting([
-            'label' => '客户评价',
-            'table' => 'company_feedback',
+            'label' => '合作伙伴',
+            'table' => 'company_partner',
             'grid' => [
-                'title' => '客户评价',
+                'title' => '合作伙伴',
 
                 'filter' => [
                     ['is_delete', '=', '0'],
@@ -94,7 +91,7 @@ class Feedback
                 'titleRightToolbar' => [
                     'items' => [
                         [
-                            'label' => '新增客户评价',
+                            'label' => '新增合作伙伴',
                             'task' => 'create',
                             'target' => 'drawer', // 'ajax - ajax请求 / dialog - 对话框窗口 / drawer - 抽屉 / self - 当前页面 / blank - 新页面'
                             'drawer' => [
@@ -164,16 +161,16 @@ class Feedback
                             'width' => '50',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
+                            'name' => 'logo',
+                            'label' => 'LOGO',
                             'width' => '90',
                             'align' => 'left',
-                            'driver' => TableItemAvatar::class,
+                            'driver' => TableItemImage::class,
                             'value' => function ($row) {
-                                if ($row['avatar']) {
-                                    return $row['avatar'];
+                                if ($row['logo']) {
+                                    return $row['logo'];
                                 } else {
-                                    return Be::getProperty('App.Company')->getWwwUrl() . '/images/feedback/avatar/default.jpg';
+                                    return Be::getProperty('App.Company')->getWwwUrl() . '/images/team/partner/default.jpg';
                                 }
                             },
                             'ui' => [
@@ -190,11 +187,6 @@ class Feedback
                             'drawer' => [
                                 'width' => '60%',
                             ],
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'width' => '300',
                         ],
                         [
                             'name' => 'is_enable',
@@ -258,21 +250,13 @@ class Feedback
                             'label' => 'ID',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => DetailItemAvatar::class,
+                            'name' => 'logo',
+                            'label' => 'LOGO',
+                            'driver' => DetailItemImage::class,
                         ],
                         [
                             'name' => 'name',
                             'label' => '名称',
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
                         ],
                         [
                             'name' => 'is_enable',
@@ -292,29 +276,18 @@ class Feedback
             ],
 
             'create' => [
-                'title' => '新增客户评价',
+                'title' => '新增合作伙伴',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
+                            'name' => 'logo',
+                            'label' => 'LOGO',
                             'driver' => FormItemStorageImage::class,
                         ],
                         [
                             'name' => 'name',
                             'label' => '名称',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
-                            'driver' => FormItemInputTextArea::class,
                         ],
                         [
                             'name' => 'is_enable',
@@ -327,29 +300,18 @@ class Feedback
             ],
 
             'edit' => [
-                'title' => '编辑客户评价',
+                'title' => '编辑合作伙伴',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
+                            'name' => 'logo',
+                            'label' => 'LOGO',
                             'driver' => FormItemStorageImage::class,
                         ],
                         [
                             'name' => 'name',
                             'label' => '名称',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
-                            'driver' => FormItemInputTextArea::class,
                         ],
                         [
                             'name' => 'is_enable',

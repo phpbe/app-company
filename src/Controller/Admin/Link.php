@@ -1,14 +1,9 @@
 <?php
 namespace Be\App\Company\Controller\Admin;
 
-use Be\AdminPlugin\Detail\Item\DetailItemAvatar;
-use Be\AdminPlugin\Detail\Item\DetailItemImage;
 use Be\AdminPlugin\Detail\Item\DetailItemSwitch;
 use Be\AdminPlugin\Form\Item\FormItemInputTextArea;
-use Be\AdminPlugin\Form\Item\FormItemStorageImage;
 use Be\AdminPlugin\Form\Item\FormItemSwitch;
-use Be\AdminPlugin\Table\Item\TableItemAvatar;
-use Be\AdminPlugin\Table\Item\TableItemImage;
 use Be\AdminPlugin\Table\Item\TableItemLink;
 use Be\AdminPlugin\Table\Item\TableItemSelection;
 use Be\AdminPlugin\Table\Item\TableItemSwitch;
@@ -16,24 +11,24 @@ use Be\AdminPlugin\Toolbar\Item\ToolbarItemDropDown;
 use Be\Be;
 
 /**
- * @BePermissionGroup("客户评价", ordering="3")
+ * @BePermissionGroup("友情链接", ordering="7")
  */
-class Feedback
+class Link
 {
 
     /**
-     * 客户评价
+     * 友情链接
      *
-     * @BeMenu("客户评价", ordering="3.1", icon="bi-quote")
-     * @BePermission("客户评价", ordering="3.1")
+     * @BeMenu("友情链接", ordering="7.1", icon="bi-link")
+     * @BePermission("友情链接", ordering="7.1")
      */
-    public function feedbacks()
+    public function questions()
     {
         Be::getAdminPlugin('Curd')->setting([
-            'label' => '客户评价',
-            'table' => 'company_feedback',
+            'label' => '友情链接',
+            'table' => 'company_link',
             'grid' => [
-                'title' => '客户评价',
+                'title' => '友情链接',
 
                 'filter' => [
                     ['is_delete', '=', '0'],
@@ -54,8 +49,8 @@ class Feedback
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'name',
-                            'label' => '名称',
+                            'name' => 'question',
+                            'label' => '问题',
                         ],
                     ],
                 ],
@@ -94,7 +89,7 @@ class Feedback
                 'titleRightToolbar' => [
                     'items' => [
                         [
-                            'label' => '新增客户评价',
+                            'label' => '新增友情链接',
                             'task' => 'create',
                             'target' => 'drawer', // 'ajax - ajax请求 / dialog - 对话框窗口 / drawer - 抽屉 / self - 当前页面 / blank - 新页面'
                             'drawer' => [
@@ -164,23 +159,6 @@ class Feedback
                             'width' => '50',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'width' => '90',
-                            'align' => 'left',
-                            'driver' => TableItemAvatar::class,
-                            'value' => function ($row) {
-                                if ($row['avatar']) {
-                                    return $row['avatar'];
-                                } else {
-                                    return Be::getProperty('App.Company')->getWwwUrl() . '/images/feedback/avatar/default.jpg';
-                                }
-                            },
-                            'ui' => [
-                                'style' => 'max-width: 60px; max-height: 60px'
-                            ],
-                        ],
-                        [
                             'name' => 'name',
                             'label' => '名称',
                             'align' => 'left',
@@ -192,8 +170,8 @@ class Feedback
                             ],
                         ],
                         [
-                            'name' => 'job',
-                            'label' => '职位',
+                            'name' => 'url',
+                            'label' => '网址',
                             'width' => '300',
                         ],
                         [
@@ -258,21 +236,12 @@ class Feedback
                             'label' => 'ID',
                         ],
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => DetailItemAvatar::class,
-                        ],
-                        [
                             'name' => 'name',
                             'label' => '名称',
                         ],
                         [
-                            'name' => 'job',
-                            'label' => '职位',
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
+                            'name' => 'url',
+                            'label' => '网址',
                         ],
                         [
                             'name' => 'is_enable',
@@ -292,29 +261,17 @@ class Feedback
             ],
 
             'create' => [
-                'title' => '新增客户评价',
+                'title' => '新增友情链接',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => FormItemStorageImage::class,
-                        ],
-                        [
                             'name' => 'name',
                             'label' => '名称',
-                            'required' => true,
                         ],
                         [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
-                            'driver' => FormItemInputTextArea::class,
+                            'name' => 'url',
+                            'label' => '网址',
                         ],
                         [
                             'name' => 'is_enable',
@@ -327,29 +284,17 @@ class Feedback
             ],
 
             'edit' => [
-                'title' => '编辑客户评价',
+                'title' => '编辑友情链接',
                 'theme' => 'Blank',
                 'form' => [
                     'items' => [
                         [
-                            'name' => 'avatar',
-                            'label' => '头像',
-                            'driver' => FormItemStorageImage::class,
-                        ],
-                        [
                             'name' => 'name',
                             'label' => '名称',
-                            'required' => true,
                         ],
                         [
-                            'name' => 'job',
-                            'label' => '职位',
-                            'required' => true,
-                        ],
-                        [
-                            'name' => 'content',
-                            'label' => '内容',
-                            'driver' => FormItemInputTextArea::class,
+                            'name' => 'url',
+                            'label' => '网址',
                         ],
                         [
                             'name' => 'is_enable',
