@@ -21,11 +21,13 @@ class Partner
         $partners = $cache->get($key);
 
         if (!$partners) {
-            $partners = Be::getTable('company_partner')
-                ->where('is_enable', 1)
-                ->limit($n)
-                ->getObjects();
-
+            $table =  Be::getTable('company_partner');
+            $table->where('is_delete', 0);
+            $table->where('is_enable', 1);
+            if ($n > 0) {
+                $table->limit($n);
+            }
+            $partners = $table->getObjects();
             $cache->set($key, $partners, 600);
         }
 
