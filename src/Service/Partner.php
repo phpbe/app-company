@@ -17,18 +17,19 @@ class Partner
     {
         $cache = Be::getCache();
 
-        $key = 'Company:Partner:Partners' . $n;
+        $key = 'Company:Partners';
         $partners = $cache->get($key);
 
         if (!$partners) {
             $table =  Be::getTable('company_partner');
             $table->where('is_delete', 0);
             $table->where('is_enable', 1);
-            if ($n > 0) {
-                $table->limit($n);
-            }
             $partners = $table->getObjects();
             $cache->set($key, $partners, 600);
+        }
+
+        if ($n > 0 && $n < count($partners)) {
+            ;$partners = array_slice($partners, 0, $n);
         }
 
         return $partners;
