@@ -1,5 +1,15 @@
 <be-head>
     <style type="text/css">
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            text-align: center;
+            line-height: 3rem;
+            color: #fff;
+            background-color: var(--major-color);
+            border-radius: 50%;
+        }
+
         .working-hours-items {
             border: var(--major-color-8) 2px solid;
             padding: 2rem;
@@ -27,23 +37,23 @@
 
                 <?php if ($this->configContact->phone !== '') { ?>
                 <div class="be-col-auto">
-                    <div class="be-fs-150 be-p-50 be-bc-major be-c-fff" style="border-radius: 50%;">
+                    <div class="contact-icon">
                         <i class="bi-telephone-fill"></i>
                     </div>
                 </div>
                 <div class="be-col-auto">
-                    <div class="be-lh-250 be-pl-50 be-pr-200"><?php echo $this->configContact->phone; ?></div>
+                    <div class="be-lh-300 be-pl-50 be-pr-200"><?php echo $this->configContact->phone; ?></div>
                 </div>
                 <?php } ?>
 
                 <?php if ( $this->configContact->email !== '') { ?>
                 <div class="be-col-auto">
-                    <div class="be-fs-150 be-p-50 be-bc-major be-c-fff" style="border-radius: 50%;">
+                    <div class="contact-icon">
                         <i class="bi-envelope-fill"></i>
                     </div>
                 </div>
                 <div class="be-col-auto">
-                    <div class="be-lh-250 be-pl-50"><?php echo $this->configContact->email; ?></div>
+                    <div class="be-lh-300 be-pl-50"><?php echo $this->configContact->email; ?></div>
                 </div>
                 <?php } ?>
             </div>
