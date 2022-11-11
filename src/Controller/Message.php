@@ -43,7 +43,7 @@ class Message
         $request = Be::getRequest();
         $response = Be::getResponse();
         try {
-            $tupleMessage = Be::getTuple('company_message');
+            $tupleMessage = Be::getTuple('company_contact_message');
 
             $pageUrl = $request->post('page_url', '');
             if (mb_strlen($pageUrl) > 300) {
