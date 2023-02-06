@@ -17,7 +17,7 @@ class Template extends Section
         echo $this->getCssMargin('contact-map');
 
         echo '#' . $this->id . ' .contact-map {';
-        echo 'height: 450px;';
+        echo 'height: ' . $this->config->height . ';';
         echo '}';
 
         echo '#' . $this->id . ' .contact-map iframe {';
